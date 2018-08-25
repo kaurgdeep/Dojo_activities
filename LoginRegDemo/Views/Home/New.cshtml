@@ -1,0 +1,52 @@
+@model Event
+
+@{
+    ViewData["Title"] = "New ";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<a href="Success">back</a>
+
+<form asp-action="Process" asp-controller="Home" method="POST">
+    <table>
+        <tr>
+            <td><label>Title:</label></td>
+            <td><input type="text" name="Title"></td>
+            <td><span asp-validation-for="Title"></span></td>
+        </tr>
+        <tr>
+            <td><label>Date:</label></td>
+            <td><input type="date" name="Date"></td>
+            <td><span asp-validation-for="Date"></span></td>
+        </tr>
+        <tr>
+            <td><label>Time:</label></td>
+            <td><input type="time" name="Time"></td>
+            <td><span asp-validation-for="Time"></span></td>
+        </tr>
+        <tr>
+            <td><label>Duration:</label></td>
+            <td><input type="number" name="DurationInt"></td>
+            <td>
+                <select name="DurationStr">
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                </select>
+            </td>
+            <td><span asp-validation-for="DurationInt"></span></td>
+        </tr>
+        <tr>
+            <td><label>Description:</label></td>
+            <td><textarea type="number" name="Description"></textarea></td>
+            <td><span asp-validation-for="Description"></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit"></td>
+            <td></td>
+        </tr>
+
+    </table>
+</form>

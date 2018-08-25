@@ -1,0 +1,16 @@
+<a href="Success">back</a>
+
+<div> Single Event</div>
+
+<div>@ViewBag.Events.Title</div>
+<div>@ViewBag.Users.FirstName</div>
+<div>@ViewBag.Events.Description</div>
+
+@{
+    foreach(var part in ViewBag.AllEvents.Participants) 
+    {
+        <div>@part.user.FirstName</div>
+        <div>@part.user.FirstName</div>
+        <div>@part.user.FirstName</div>
+    }
+}

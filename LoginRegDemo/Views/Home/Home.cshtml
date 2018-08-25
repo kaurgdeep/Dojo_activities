@@ -1,0 +1,56 @@
+<a href="New">Submit</a>
+
+
+
+<table class="table">
+    <tr>
+         <th> Title: </th>  
+         <th> Date: </th>
+         <th> Time: </th>
+         <th> Duration: </th>
+         <th> Event Coordinator: </th>
+         <th> Action:   </th>
+    
+    
+    </tr>  
+
+    @foreach (var item in @ViewBag.Events) {
+        @if(item.Date > @ViewBag.CurrentDate) {
+    <tr>
+        <td><a href="SingleEvent/@item.EventId"> @item.Title </a></td>
+        <td>Date: @item.Date </td>
+        <td>Time: @item.Time </td> 
+        <td>Duration: @item.DurationInt @item.DurationStr </td>
+        <td>@item.user.FirstName</td>
+        <td>@item.Participants.Count</td>
+
+        
+
+        @if(item.UserId == ViewBag.User.UserId)
+        {
+            <td> <a href="Delete/@item.EventId">Delete</a> </td>
+        }
+        else 
+        {
+            bool AttendingFlag = false;
+            foreach(var uap in item.Participants) 
+            {
+                if (uap.UserId == ViewBag.User.UserId) 
+                { 
+                    AttendingFlag = true;
+                }
+            }       
+            if(AttendingFlag) 
+            {
+                <td> <a href="Unjoin/@item.EventId">UnRsvp</a></td>
+            }
+            else
+            {
+                <td> <a href="Join/@item.EventId">Rsvp</a></td>
+            }
+        }
+
+    </tr>
+    }
+    }
+</table>
